@@ -21,4 +21,4 @@ git submodule update --remote
 
 | Yaml                                                         | Description                                                                                        |
 |--------------------------------------------------------------|----------------------------------------------------------------------------------------------------|
-| ``C3-metabolic-and-leaf-model_ProtTranslationModel_CO2.yml`` | Integration of Yu Wang's C3 metabolic/leaf model and <br>Kavya Kannan's protein translation model. |
+| ``C3-metabolic-and-leaf-model_ProtTranslationModel_CO2.yml`` | Integration of Yu Wang's C3 metabolic/leaf model and Kavya Kannan's protein translation model. |
