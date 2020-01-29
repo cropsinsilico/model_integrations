@@ -1,0 +1,9 @@
+[submodule "models/ProtTranslationModel_CO2"]
+	path = models/ProtTranslationModel_CO2
+	url = https://github.com/cropsinsilico/ProtTranslationModel_CO2
+[submodule "models/C3-metabolic-and-leaf-model"]
+	path = models/C3-metabolic-and-leaf-model
+	url = https://github.com/cropsinsilico/C3-metabolic-and-leaf-model
+[submodule "models/GRN_Model"]
+	path = models/GRN_Model
+	url = https://github.com/cropsinsilico/GRN_Model
