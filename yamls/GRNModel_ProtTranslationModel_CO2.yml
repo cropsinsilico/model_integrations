@@ -1,0 +1,21 @@
+include:
+  - ../models/GRN_Model/GRNModel.yml
+  - ../models/ProtTranslationModel_CO2/GrCM.yml
+
+connections:
+  # Inter-model connections
+  - input:
+      name: GRNModel:bhlhbTFKoPercDiff
+      recv_converter: pandas
+    output: GrCMPython:grn_input
+    
+  # ProtTranslationModel_CO2
+  - input: ../models/ProtTranslationModel_CO2/Input/GrCM_static.txt
+    output: GrCMPython:data_static
+    filetype: pandas
+  - input: ../models/ProtTranslationModel_CO2/Input/GrCM_input.txt
+    output: GrCMPython:data_inp
+    filetype: pandas
+  - input: GrCMPython:data_output
+    output: ./Output/GrCM_output.txt
+    filetype: pandas
