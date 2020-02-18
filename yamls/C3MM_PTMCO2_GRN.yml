@@ -1,0 +1,45 @@
+include:
+  - ../models/GRN_Model/GRNModel.yml
+  - ../models/C3-metabolic-and-leaf-model/C3Leaf.yml
+  - ../models/ProtTranslationModel_CO2/GrCM.yml
+
+connections:
+  # Inter-model connections
+  - input:
+      name: GRNModel:bhlhbTFKoPercDiff
+      recv_converter: pandas
+    output: GrCMPython:grn_input
+  - input:
+      name: GrCMPython:data_output
+      transform:
+        - pandas
+        - transformtype: select_fields
+          selected: Glyma_ID,Ele:Amb
+    output: C3Leaf:Einput
+    
+  # C3-metabolic-and-leaf-model connections
+  - input: ../models/C3-metabolic-and-leaf-model/EnvInput.txt
+    output:
+      name: C3Leaf:Env
+      outside_loop: true
+    filetype: map
+  - input: ../models/C3-metabolic-and-leaf-model/Einput7.txt
+    output:
+      name: C3Leaf:Eio
+      outside_loop: true
+    filetype: pandas
+    no_header: true
+  - input: C3Leaf:LeafAssim
+    output: ./Output/LeafmetaOut_Prot.txt
+    filetype: table
+    field_names: A
+
+  # ProtTranslationModel_CO2
+  - input: ../models/ProtTranslationModel_CO2/Input/GrCM_static.txt
+    output:
+      name: GrCMPython:data_static
+      outside_loop: true
+    filetype: pandas
+  - input: ../models/ProtTranslationModel_CO2/Input/GrCM_input.txt
+    output: GrCMPython:data_inp
+    filetype: pandas
