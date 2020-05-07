@@ -6,7 +6,7 @@ include:
 connections:
   # Inter-model connections
   - input:
-      name: GRNModel:bhlhbTFKoPercDiff
+      name: GRNModel:ExpPercDiff
       recv_converter: pandas
     output: GrCMPython:grn_input
   - input:
